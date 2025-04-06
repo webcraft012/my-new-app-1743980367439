@@ -1,4 +1,7 @@
+"use client";
 import React, { ReactNode, useState } from "react"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
@@ -107,14 +110,4 @@ interface LayoutProps {
   description?: string;
 }
 
-/**
- * Layout component that wraps all pages
- *
- * Provides consistent page structure with head metadata
- *
- * @param {LayoutProps} props - Component props
- * @returns {JSX.Element} The layout component
- */
-export function Layout({ children }: LayoutProps): JSX.Element {
-  return <div className="min-h-screen font-sans">{children}</div>;
-}
+
