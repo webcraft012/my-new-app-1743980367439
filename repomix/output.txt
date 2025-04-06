@@ -5,126 +5,30 @@ The content has been processed where line numbers have been added.
 This section contains the contents of the repository's files.
 
 <file path="components/Layout.tsx">
-  1: import React, { ReactNode, useState } from "react"
-  2: import Link from "next/link"
-  3: import { Button } from "@/components/ui/button"
-  4: 
-  5: interface LayoutProps {
-  6:   children: ReactNode
-  7: }
-  8: 
-  9: export default function Layout({ children }: LayoutProps) {
- 10:   const [isMenuOpen, setIsMenuOpen] = useState(false)
- 11: 
- 12:   return (
- 13:     <div className="flex flex-col min-h-screen">
- 14:       <header className="flex items-center justify-between px-4 py-3 border-b">
- 15:         <div className="flex items-center space-x-4">
- 16:           <Link href="/" className="text-xl font-bold">
- 17:             SalonLogo
- 18:           </Link>
- 19:         </div>
- 20:         <nav className="hidden md:flex space-x-2">
- 21:           <Button variant="link" asChild>
- 22:             <Link href="/">Home</Link>
- 23:           </Button>
- 24:           <Button variant="link" asChild>
- 25:             <Link href="/services">Services</Link>
- 26:           </Button>
- 27:           <Button variant="link" asChild>
- 28:             <Link href="/gallery">Gallery</Link>
- 29:           </Button>
- 30:           <Button variant="link" asChild>
- 31:             <Link href="/contact">Contact</Link>
- 32:           </Button>
- 33:           <Button variant="link" asChild>
- 34:             <Link href="/booking">Booking</Link>
- 35:           </Button>
- 36:         </nav>
- 37:         <div className="md:hidden">
- 38:           <Button
- 39:             variant="outline"
- 40:             size="icon"
- 41:             onClick={() => setIsMenuOpen(!isMenuOpen)}
- 42:           >
- 43:             <svg
- 44:               className="w-6 h-6"
- 45:               fill="none"
- 46:               stroke="currentColor"
- 47:               viewBox="0 0 24 24"
- 48:               xmlns="http://www.w3.org/2000/svg"
- 49:             >
- 50:               {isMenuOpen ? (
- 51:                 <path
- 52:                   strokeLinecap="round"
- 53:                   strokeLinejoin="round"
- 54:                   strokeWidth={2}
- 55:                   d="M6 18L18 6M6 6l12 12"
- 56:                 />
- 57:               ) : (
- 58:                 <path
- 59:                   strokeLinecap="round"
- 60:                   strokeLinejoin="round"
- 61:                   strokeWidth={2}
- 62:                   d="M4 6h16M4 12h16M4 18h16"
- 63:                 />
- 64:               )}
- 65:             </svg>
- 66:           </Button>
- 67:         </div>
- 68:       </header>
- 69:       {isMenuOpen && (
- 70:         <nav className="flex flex-col md:hidden px-4 py-2 border-b space-y-2">
- 71:           <Button variant="link" asChild onClick={() => setIsMenuOpen(false)}>
- 72:             <Link href="/">Home</Link>
- 73:           </Button>
- 74:           <Button variant="link" asChild onClick={() => setIsMenuOpen(false)}>
- 75:             <Link href="/services">Services</Link>
- 76:           </Button>
- 77:           <Button variant="link" asChild onClick={() => setIsMenuOpen(false)}>
- 78:             <Link href="/gallery">Gallery</Link>
- 79:           </Button>
- 80:           <Button variant="link" asChild onClick={() => setIsMenuOpen(false)}>
- 81:             <Link href="/contact">Contact</Link>
- 82:           </Button>
- 83:           <Button variant="link" asChild onClick={() => setIsMenuOpen(false)}>
- 84:             <Link href="/booking">Booking</Link>
- 85:           </Button>
- 86:         </nav>
- 87:       )}
- 88:       <main className="flex-1">{children}</main>
- 89:       <footer className="border-t px-4 py-6 text-center text-sm space-y-2">
- 90:         <div>&copy; {new Date().getFullYear()} Salon Name. All rights reserved.</div>
- 91:         <div className="space-x-4">
- 92:           <Link href="/privacy" className="hover:underline">
- 93:             Privacy Policy
- 94:           </Link>
- 95:           <Link href="/terms" className="hover:underline">
- 96:             Terms of Service
- 97:           </Link>
- 98:         </div>
- 99:       </footer>
-100:     </div>
-101:   )
-102: }
-103: 
-104: interface LayoutProps {
-105:   children: React.ReactNode;
-106:   title?: string;
-107:   description?: string;
-108: }
-109: 
-110: /**
-111:  * Layout component that wraps all pages
-112:  *
-113:  * Provides consistent page structure with head metadata
-114:  *
-115:  * @param {LayoutProps} props - Component props
-116:  * @returns {JSX.Element} The layout component
-117:  */
-118: export function Layout({ children }: LayoutProps): JSX.Element {
-119:   return <div className="min-h-screen font-sans">{children}</div>;
-120: }
+ 1: import React from "react";
+ 2: 
+ 3: interface LayoutProps {
+ 4:   title?: string;
+ 5:   description?: string;
+ 6:   children: React.ReactNode;
+ 7: }
+ 8: 
+ 9: const Layout: React.FC<LayoutProps> = ({ title, description, children }) => {
+10:   return (
+11:     <div className="min-h-screen flex flex-col">
+12:       <header className="bg-gray-800 text-white p-4">
+13:         <h1 className="text-2xl">{title || "My App"}</h1>
+14:         {description && <p className="text-sm">{description}</p>}
+15:       </header>
+16:       <main className="flex-1 p-4">{children}</main>
+17:       <footer className="bg-gray-800 text-white p-4 text-center">
+18:         &copy; {new Date().getFullYear()} My App. All rights reserved.
+19:       </footer>
+20:     </div>
+21:   );
+22: };
+23: 
+24: export default Layout;
 </file>
 
 </files>

@@ -22,3 +22,4 @@ const Layout: React.FC<LayoutProps> = ({ title, description, children }) => {
 };
 
 export default Layout;
+export { Layout };
