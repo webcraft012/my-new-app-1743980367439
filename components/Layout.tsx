@@ -100,7 +100,7 @@ export default function Layout({ children }: LayoutProps) {
     </div>
   )
 }
- */
+*/
 interface LayoutProps {
   children: React.ReactNode;
   title?: string;
