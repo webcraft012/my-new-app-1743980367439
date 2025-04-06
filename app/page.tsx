@@ -1,10 +1,15 @@
+// This project requires the 'swiper' package. Please install it via 'npm install swiper'.
+// The following Swiper imports are temporarily commented out to prevent build errors.
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import 'swiper/css';
+// import 'swiper/css/navigation';
+// import 'swiper/css/pagination';
+
 import Link from 'next/link';
-  import Image from 'next/image';
-  import { Button } from '@/components/ui/button';
-  import { Swiper, SwiperSlide } from 'swiper/react';
-  import 'swiper/css';
-  import 'swiper/css/navigation';
-  import 'swiper/css/pagination';
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { FaInstagram, FaFacebookF, FaTwitter } from 'react-icons/fa';
   import { Navigation, Pagination, Autoplay } from 'swiper/modules';
   import { FaInstagram, FaFacebookF, FaTwitter } from 'react-icons/fa';
 
@@ -67,60 +72,37 @@ import Link from 'next/link';
         {/* Gallery Preview */}
         <section className="py-16 px-4 max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold mb-10 text-center">Gallery</h2>
-          <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
-            navigation
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 3000 }}
-            spaceBetween={20}
-            slidesPerView={1}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-            }}
-          >
-            {['/gallery/1.jpg', '/gallery/2.jpg', '/gallery/3.jpg', '/gallery/4.jpg'].map((src, idx) => (
-              <SwiperSlide key={idx}>
-                <Link href="/gallery">
-                  <div className="relative h-64 rounded-lg overflow-hidden">
-                    <Image src={src} alt={`Gallery image ${idx + 1}`} layout="fill" objectFit="cover" />
-                  </div>
-                </Link>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+{/* Swiper gallery temporarily disabled due to missing swiper package */}
+<div className="flex flex-wrap gap-4 justify-center">
+  {['/gallery/1.jpg', '/gallery/2.jpg', '/gallery/3.jpg', '/gallery/4.jpg'].map((src, idx) => (
+    <Link href="/gallery" key={idx}>
+      <div className="relative w-64 h-64 rounded-lg overflow-hidden">
+        <Image src={src} alt={`Gallery image ${idx + 1}`} layout="fill" objectFit="cover" />
+      </div>
+    </Link>
+  ))}
+</div>
         </section>
 
         {/* Testimonials */}
         <section className="py-16 px-4 max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold mb-10 text-center">What Our Clients Say</h2>
-          <Swiper
-            modules={[Pagination, Autoplay]}
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 4000 }}
-            spaceBetween={20}
-            slidesPerView={1}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-            }}
-          >
-            {[
-              { name: 'Emily R.', photo: '/testimonials/emily.jpg', text: 'Absolutely love my new hairstyle! The team is amazing.' },
-              { name: 'Sophia L.', photo: '/testimonials/sophia.jpg', text: 'Best spa experience ever. So relaxing and rejuvenating.' },
-              { name: 'Olivia M.', photo: '/testimonials/olivia.jpg', text: 'My nails have never looked better. Highly recommend!' },
-            ].map((testimonial, idx) => (
-              <SwiperSlide key={idx}>
-                <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center text-center">
-                  <div className="relative w-24 h-24 mb-4 rounded-full overflow-hidden">
-                    <Image src={testimonial.photo} alt={testimonial.name} layout="fill" objectFit="cover" />
-                  </div>
-                  <p className="italic mb-4">"{testimonial.text}"</p>
-                  <h4 className="font-semibold">{testimonial.name}</h4>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+{/* Swiper testimonials temporarily disabled due to missing swiper package */}
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  {[
+    { name: 'Emily R.', photo: '/testimonials/emily.jpg', text: 'Absolutely love my new hairstyle! The team is amazing.' },
+    { name: 'Sophia L.', photo: '/testimonials/sophia.jpg', text: 'Best spa experience ever. So relaxing and rejuvenating.' },
+    { name: 'Olivia M.', photo: '/testimonials/olivia.jpg', text: 'My nails have never looked better. Highly recommend!' },
+  ].map((testimonial, idx) => (
+    <div key={idx} className="bg-white rounded-lg shadow p-6 flex flex-col items-center text-center">
+      <div className="relative w-24 h-24 mb-4 rounded-full overflow-hidden">
+        <Image src={testimonial.photo} alt={testimonial.name} layout="fill" objectFit="cover" />
+      </div>
+      <p className="italic mb-4">"{testimonial.text}"</p>
+      <h4 className="font-semibold">{testimonial.name}</h4>
+    </div>
+  ))}
+</div>
         </section>
 
         {/* Contact Info */}
