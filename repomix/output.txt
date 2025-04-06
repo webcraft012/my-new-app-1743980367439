@@ -17,136 +17,135 @@ This section contains the contents of the repository's files.
  10: import { Button } from '@/components/ui/button';
  11: import { Navigation, Pagination, Autoplay } from 'swiper/modules';
  12: import { FaInstagram, FaFacebookF, FaTwitter } from 'react-icons/fa';
- 13:   import { Navigation, Pagination, Autoplay } from 'swiper/modules';
- 14:   import { FaInstagram, FaFacebookF, FaTwitter } from 'react-icons/fa';
- 15: 
- 16:   export default function HomePage() {
- 17:     return (
- 18:       <main className="flex flex-col">
- 19:         {/* Hero Section */}
- 20:         <section className="relative h-screen flex items-center justify-center text-center text-white">
- 21:           <div className="absolute inset-0 -z-10">
- 22:             <Image
- 23:               src="/hero.jpg"
- 24:               alt="Salon Luxe"
- 25:               layout="fill"
- 26:               objectFit="cover"
- 27:               priority
- 28:             />
- 29:           </div>
- 30:           <div className="bg-black bg-opacity-50 p-8 rounded-lg">
- 31:             <h1 className="text-5xl md:text-7xl font-bold mb-4">Salon Luxe</h1>
- 32:             <p className="text-xl md:text-2xl mb-6">Experience Luxury & Style</p>
- 33:             <Link href="/booking">
- 34:               <Button size="lg">Book Now</Button>
- 35:             </Link>
- 36:           </div>
- 37:         </section>
- 38: 
- 39:         {/* About Section */}
- 40:         <section className="py-16 px-4 max-w-6xl mx-auto text-center">
- 41:           <h2 className="text-3xl font-bold mb-6">About Us</h2>
- 42:           <p className="text-lg mb-4">
- 43:             At Salon Luxe, we provide top-tier hair, beauty, and wellness services in a luxurious environment. Our expert stylists and therapists are dedicated to making you look and feel your best.
- 44:           </p>
- 45:           <p className="text-lg">
- 46:             Discover the difference with personalized care, premium products, and a relaxing atmosphere.
- 47:           </p>
- 48:         </section>
- 49: 
- 50:         {/* Services Preview */}
- 51:         <section className="py-16 px-4 max-w-6xl mx-auto">
- 52:           <h2 className="text-3xl font-bold mb-10 text-center">Our Services</h2>
- 53:           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
- 54:             {[
- 55:               { title: 'Hair Styling', image: '/services/hair.jpg', description: 'Cuts, coloring, and styling tailored to you.' },
- 56:               { title: 'Nail Care', image: '/services/nails.jpg', description: 'Manicures, pedicures, and nail art.' },
- 57:               { title: 'Spa Treatments', image: '/services/spa.jpg', description: 'Relaxing facials and massages.' },
- 58:             ].map((service) => (
- 59:               <Link href="/services" key={service.title} className="group border rounded-lg overflow-hidden hover:shadow-lg transition">
- 60:                 <div className="relative h-64">
- 61:                   <Image src={service.image} alt={service.title} layout="fill" objectFit="cover" />
- 62:                 </div>
- 63:                 <div className="p-4">
- 64:                   <h3 className="text-xl font-semibold mb-2 group-hover:text-pink-600 transition">{service.title}</h3>
- 65:                   <p>{service.description}</p>
- 66:                 </div>
- 67:               </Link>
- 68:             ))}
- 69:           </div>
- 70:         </section>
- 71: 
- 72:         {/* Gallery Preview */}
- 73:         <section className="py-16 px-4 max-w-6xl mx-auto">
- 74:           <h2 className="text-3xl font-bold mb-10 text-center">Gallery</h2>
- 75: {/* Swiper gallery temporarily disabled due to missing swiper package */}
- 76: <div className="flex flex-wrap gap-4 justify-center">
- 77:   {['/gallery/1.jpg', '/gallery/2.jpg', '/gallery/3.jpg', '/gallery/4.jpg'].map((src, idx) => (
- 78:     <Link href="/gallery" key={idx}>
- 79:       <div className="relative w-64 h-64 rounded-lg overflow-hidden">
- 80:         <Image src={src} alt={`Gallery image ${idx + 1}`} layout="fill" objectFit="cover" />
- 81:       </div>
- 82:     </Link>
- 83:   ))}
- 84: </div>
- 85:         </section>
- 86: 
- 87:         {/* Testimonials */}
- 88:         <section className="py-16 px-4 max-w-6xl mx-auto">
- 89:           <h2 className="text-3xl font-bold mb-10 text-center">What Our Clients Say</h2>
- 90: {/* Swiper testimonials temporarily disabled due to missing swiper package */}
- 91: <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
- 92:   {[
- 93:     { name: 'Emily R.', photo: '/testimonials/emily.jpg', text: 'Absolutely love my new hairstyle! The team is amazing.' },
- 94:     { name: 'Sophia L.', photo: '/testimonials/sophia.jpg', text: 'Best spa experience ever. So relaxing and rejuvenating.' },
- 95:     { name: 'Olivia M.', photo: '/testimonials/olivia.jpg', text: 'My nails have never looked better. Highly recommend!' },
- 96:   ].map((testimonial, idx) => (
- 97:     <div key={idx} className="bg-white rounded-lg shadow p-6 flex flex-col items-center text-center">
- 98:       <div className="relative w-24 h-24 mb-4 rounded-full overflow-hidden">
- 99:         <Image src={testimonial.photo} alt={testimonial.name} layout="fill" objectFit="cover" />
-100:       </div>
-101:       <p className="italic mb-4">"{testimonial.text}"</p>
-102:       <h4 className="font-semibold">{testimonial.name}</h4>
-103:     </div>
-104:   ))}
-105: </div>
-106:         </section>
-107: 
-108:         {/* Contact Info */}
-109:         <section className="py-16 px-4 max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
-110:           <div>
-111:             <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
-112:             <p className="mb-2">123 Luxury Ave, Suite 100</p>
-113:             <p className="mb-2">Cityville, ST 12345</p>
-114:             <p className="mb-2">Phone: (123) 456-7890</p>
-115:             <p className="mb-6">Email: info@salonluxe.com</p>
-116:             <div className="flex space-x-4">
-117:               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-118:                 <FaInstagram size={24} />
-119:               </a>
-120:               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-121:                 <FaFacebookF size={24} />
-122:               </a>
-123:               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-124:                 <FaTwitter size={24} />
-125:               </a>
-126:             </div>
-127:           </div>
-128:           <div className="w-full h-64 md:h-full">
-129:             <iframe
-130:               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019123456789!2d-122.419415684681!3d37.7749297797596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c1234567%3A0xabcdef1234567890!2sSalon%20Luxe!5e0!3m2!1sen!2sus!4v1610000000000!5m2!1sen!2sus"
-131:               width="100%"
-132:               height="100%"
-133:               style={{ border: 0 }}
-134:               allowFullScreen
-135:               loading="lazy"
-136:               referrerPolicy="no-referrer-when-downgrade"
-137:             ></iframe>
-138:           </div>
-139:         </section>
-140:       </main>
-141:     );
-142:   }
+ 13: 
+ 14: 
+ 15:   export default function HomePage() {
+ 16:     return (
+ 17:       <main className="flex flex-col">
+ 18:         {/* Hero Section */}
+ 19:         <section className="relative h-screen flex items-center justify-center text-center text-white">
+ 20:           <div className="absolute inset-0 -z-10">
+ 21:             <Image
+ 22:               src="/hero.jpg"
+ 23:               alt="Salon Luxe"
+ 24:               layout="fill"
+ 25:               objectFit="cover"
+ 26:               priority
+ 27:             />
+ 28:           </div>
+ 29:           <div className="bg-black bg-opacity-50 p-8 rounded-lg">
+ 30:             <h1 className="text-5xl md:text-7xl font-bold mb-4">Salon Luxe</h1>
+ 31:             <p className="text-xl md:text-2xl mb-6">Experience Luxury & Style</p>
+ 32:             <Link href="/booking">
+ 33:               <Button size="lg">Book Now</Button>
+ 34:             </Link>
+ 35:           </div>
+ 36:         </section>
+ 37: 
+ 38:         {/* About Section */}
+ 39:         <section className="py-16 px-4 max-w-6xl mx-auto text-center">
+ 40:           <h2 className="text-3xl font-bold mb-6">About Us</h2>
+ 41:           <p className="text-lg mb-4">
+ 42:             At Salon Luxe, we provide top-tier hair, beauty, and wellness services in a luxurious environment. Our expert stylists and therapists are dedicated to making you look and feel your best.
+ 43:           </p>
+ 44:           <p className="text-lg">
+ 45:             Discover the difference with personalized care, premium products, and a relaxing atmosphere.
+ 46:           </p>
+ 47:         </section>
+ 48: 
+ 49:         {/* Services Preview */}
+ 50:         <section className="py-16 px-4 max-w-6xl mx-auto">
+ 51:           <h2 className="text-3xl font-bold mb-10 text-center">Our Services</h2>
+ 52:           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+ 53:             {[
+ 54:               { title: 'Hair Styling', image: '/services/hair.jpg', description: 'Cuts, coloring, and styling tailored to you.' },
+ 55:               { title: 'Nail Care', image: '/services/nails.jpg', description: 'Manicures, pedicures, and nail art.' },
+ 56:               { title: 'Spa Treatments', image: '/services/spa.jpg', description: 'Relaxing facials and massages.' },
+ 57:             ].map((service) => (
+ 58:               <Link href="/services" key={service.title} className="group border rounded-lg overflow-hidden hover:shadow-lg transition">
+ 59:                 <div className="relative h-64">
+ 60:                   <Image src={service.image} alt={service.title} layout="fill" objectFit="cover" />
+ 61:                 </div>
+ 62:                 <div className="p-4">
+ 63:                   <h3 className="text-xl font-semibold mb-2 group-hover:text-pink-600 transition">{service.title}</h3>
+ 64:                   <p>{service.description}</p>
+ 65:                 </div>
+ 66:               </Link>
+ 67:             ))}
+ 68:           </div>
+ 69:         </section>
+ 70: 
+ 71:         {/* Gallery Preview */}
+ 72:         <section className="py-16 px-4 max-w-6xl mx-auto">
+ 73:           <h2 className="text-3xl font-bold mb-10 text-center">Gallery</h2>
+ 74: {/* Swiper gallery temporarily disabled due to missing swiper package */}
+ 75: <div className="flex flex-wrap gap-4 justify-center">
+ 76:   {['/gallery/1.jpg', '/gallery/2.jpg', '/gallery/3.jpg', '/gallery/4.jpg'].map((src, idx) => (
+ 77:     <Link href="/gallery" key={idx}>
+ 78:       <div className="relative w-64 h-64 rounded-lg overflow-hidden">
+ 79:         <Image src={src} alt={`Gallery image ${idx + 1}`} layout="fill" objectFit="cover" />
+ 80:       </div>
+ 81:     </Link>
+ 82:   ))}
+ 83: </div>
+ 84:         </section>
+ 85: 
+ 86:         {/* Testimonials */}
+ 87:         <section className="py-16 px-4 max-w-6xl mx-auto">
+ 88:           <h2 className="text-3xl font-bold mb-10 text-center">What Our Clients Say</h2>
+ 89: {/* Swiper testimonials temporarily disabled due to missing swiper package */}
+ 90: <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+ 91:   {[
+ 92:     { name: 'Emily R.', photo: '/testimonials/emily.jpg', text: 'Absolutely love my new hairstyle! The team is amazing.' },
+ 93:     { name: 'Sophia L.', photo: '/testimonials/sophia.jpg', text: 'Best spa experience ever. So relaxing and rejuvenating.' },
+ 94:     { name: 'Olivia M.', photo: '/testimonials/olivia.jpg', text: 'My nails have never looked better. Highly recommend!' },
+ 95:   ].map((testimonial, idx) => (
+ 96:     <div key={idx} className="bg-white rounded-lg shadow p-6 flex flex-col items-center text-center">
+ 97:       <div className="relative w-24 h-24 mb-4 rounded-full overflow-hidden">
+ 98:         <Image src={testimonial.photo} alt={testimonial.name} layout="fill" objectFit="cover" />
+ 99:       </div>
+100:       <p className="italic mb-4">"{testimonial.text}"</p>
+101:       <h4 className="font-semibold">{testimonial.name}</h4>
+102:     </div>
+103:   ))}
+104: </div>
+105:         </section>
+106: 
+107:         {/* Contact Info */}
+108:         <section className="py-16 px-4 max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+109:           <div>
+110:             <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
+111:             <p className="mb-2">123 Luxury Ave, Suite 100</p>
+112:             <p className="mb-2">Cityville, ST 12345</p>
+113:             <p className="mb-2">Phone: (123) 456-7890</p>
+114:             <p className="mb-6">Email: info@salonluxe.com</p>
+115:             <div className="flex space-x-4">
+116:               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+117:                 <FaInstagram size={24} />
+118:               </a>
+119:               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+120:                 <FaFacebookF size={24} />
+121:               </a>
+122:               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+123:                 <FaTwitter size={24} />
+124:               </a>
+125:             </div>
+126:           </div>
+127:           <div className="w-full h-64 md:h-full">
+128:             <iframe
+129:               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019123456789!2d-122.419415684681!3d37.7749297797596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c1234567%3A0xabcdef1234567890!2sSalon%20Luxe!5e0!3m2!1sen!2sus!4v1610000000000!5m2!1sen!2sus"
+130:               width="100%"
+131:               height="100%"
+132:               style={{ border: 0 }}
+133:               allowFullScreen
+134:               loading="lazy"
+135:               referrerPolicy="no-referrer-when-downgrade"
+136:             ></iframe>
+137:           </div>
+138:         </section>
+139:       </main>
+140:     );
+141:   }
 </file>
 
 </files>
