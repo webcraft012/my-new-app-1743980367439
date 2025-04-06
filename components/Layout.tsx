@@ -1,6 +1,8 @@
 "use client";
-import React, { ReactNode, useState } from "react"
-import Link from "next/link"
+
+import Link from "next/link";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -101,13 +103,10 @@ export default function Layout({ children }: LayoutProps) {
         </div>
       </footer>
     </div>
-  )
-}
 
-interface LayoutProps {
-  children: React.ReactNode;
   title?: string;
   description?: string;
 }
+
 
 
