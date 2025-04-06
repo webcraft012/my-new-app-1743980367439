@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Layout } from "@/components/Layout";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -8,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Todo App",
-  description: "A simple todo app built with Next.js",
+  title: "Salon Luxe",
+  description: "Salon Luxe - Your premier destination for stunning hair transformations.",
 };
 
 export default function RootLayout({
@@ -20,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="min-h-screen bg-background font-sans antialiased">
-        {children}
+        <Layout>{children}</Layout>
       </body>
     </html>
   );
