@@ -10,8 +10,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { FaInstagram, FaFacebookF, FaTwitter } from 'react-icons/fa';
-  import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-  import { FaInstagram, FaFacebookF, FaTwitter } from 'react-icons/fa';
+
 
   export default function HomePage() {
     return (
