@@ -4,167 +4,127 @@ The content has been processed where line numbers have been added.
 <files>
 This section contains the contents of the repository's files.
 
-<file path="app/page.tsx">
-  1: import Link from 'next/link';
-  2:   import Image from 'next/image';
-  3:   import { Button } from '@/components/ui/button';
-  4:   import { Swiper, SwiperSlide } from 'swiper/react';
-  5:   import 'swiper/css';
-  6:   import 'swiper/css/navigation';
-  7:   import 'swiper/css/pagination';
-  8:   import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-  9:   import { FaInstagram, FaFacebookF, FaTwitter } from 'react-icons/fa';
- 10: 
- 11:   export default function HomePage() {
- 12:     return (
- 13:       <main className="flex flex-col">
- 14:         {/* Hero Section */}
- 15:         <section className="relative h-screen flex items-center justify-center text-center text-white">
- 16:           <div className="absolute inset-0 -z-10">
- 17:             <Image
- 18:               src="/hero.jpg"
- 19:               alt="Salon Luxe"
- 20:               layout="fill"
- 21:               objectFit="cover"
- 22:               priority
- 23:             />
- 24:           </div>
- 25:           <div className="bg-black bg-opacity-50 p-8 rounded-lg">
- 26:             <h1 className="text-5xl md:text-7xl font-bold mb-4">Salon Luxe</h1>
- 27:             <p className="text-xl md:text-2xl mb-6">Experience Luxury & Style</p>
- 28:             <Link href="/booking">
- 29:               <Button size="lg">Book Now</Button>
- 30:             </Link>
- 31:           </div>
- 32:         </section>
- 33: 
- 34:         {/* About Section */}
- 35:         <section className="py-16 px-4 max-w-6xl mx-auto text-center">
- 36:           <h2 className="text-3xl font-bold mb-6">About Us</h2>
- 37:           <p className="text-lg mb-4">
- 38:             At Salon Luxe, we provide top-tier hair, beauty, and wellness services in a luxurious environment. Our expert stylists and therapists are dedicated to making you look and feel your best.
- 39:           </p>
- 40:           <p className="text-lg">
- 41:             Discover the difference with personalized care, premium products, and a relaxing atmosphere.
- 42:           </p>
- 43:         </section>
- 44: 
- 45:         {/* Services Preview */}
- 46:         <section className="py-16 px-4 max-w-6xl mx-auto">
- 47:           <h2 className="text-3xl font-bold mb-10 text-center">Our Services</h2>
- 48:           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
- 49:             {[
- 50:               { title: 'Hair Styling', image: '/services/hair.jpg', description: 'Cuts, coloring, and styling tailored to you.' },
- 51:               { title: 'Nail Care', image: '/services/nails.jpg', description: 'Manicures, pedicures, and nail art.' },
- 52:               { title: 'Spa Treatments', image: '/services/spa.jpg', description: 'Relaxing facials and massages.' },
- 53:             ].map((service) => (
- 54:               <Link href="/services" key={service.title} className="group border rounded-lg overflow-hidden hover:shadow-lg transition">
- 55:                 <div className="relative h-64">
- 56:                   <Image src={service.image} alt={service.title} layout="fill" objectFit="cover" />
- 57:                 </div>
- 58:                 <div className="p-4">
- 59:                   <h3 className="text-xl font-semibold mb-2 group-hover:text-pink-600 transition">{service.title}</h3>
- 60:                   <p>{service.description}</p>
- 61:                 </div>
- 62:               </Link>
- 63:             ))}
- 64:           </div>
- 65:         </section>
- 66: 
- 67:         {/* Gallery Preview */}
- 68:         <section className="py-16 px-4 max-w-6xl mx-auto">
- 69:           <h2 className="text-3xl font-bold mb-10 text-center">Gallery</h2>
- 70:           <Swiper
- 71:             modules={[Navigation, Pagination, Autoplay]}
- 72:             navigation
- 73:             pagination={{ clickable: true }}
- 74:             autoplay={{ delay: 3000 }}
- 75:             spaceBetween={20}
- 76:             slidesPerView={1}
- 77:             breakpoints={{
- 78:               640: { slidesPerView: 2 },
- 79:               1024: { slidesPerView: 3 },
- 80:             }}
- 81:           >
- 82:             {['/gallery/1.jpg', '/gallery/2.jpg', '/gallery/3.jpg', '/gallery/4.jpg'].map((src, idx) => (
- 83:               <SwiperSlide key={idx}>
- 84:                 <Link href="/gallery">
- 85:                   <div className="relative h-64 rounded-lg overflow-hidden">
- 86:                     <Image src={src} alt={`Gallery image ${idx + 1}`} layout="fill" objectFit="cover" />
- 87:                   </div>
- 88:                 </Link>
- 89:               </SwiperSlide>
- 90:             ))}
- 91:           </Swiper>
- 92:         </section>
- 93: 
- 94:         {/* Testimonials */}
- 95:         <section className="py-16 px-4 max-w-6xl mx-auto">
- 96:           <h2 className="text-3xl font-bold mb-10 text-center">What Our Clients Say</h2>
- 97:           <Swiper
- 98:             modules={[Pagination, Autoplay]}
- 99:             pagination={{ clickable: true }}
-100:             autoplay={{ delay: 4000 }}
-101:             spaceBetween={20}
-102:             slidesPerView={1}
-103:             breakpoints={{
-104:               640: { slidesPerView: 2 },
-105:               1024: { slidesPerView: 3 },
-106:             }}
-107:           >
-108:             {[
-109:               { name: 'Emily R.', photo: '/testimonials/emily.jpg', text: 'Absolutely love my new hairstyle! The team is amazing.' },
-110:               { name: 'Sophia L.', photo: '/testimonials/sophia.jpg', text: 'Best spa experience ever. So relaxing and rejuvenating.' },
-111:               { name: 'Olivia M.', photo: '/testimonials/olivia.jpg', text: 'My nails have never looked better. Highly recommend!' },
-112:             ].map((testimonial, idx) => (
-113:               <SwiperSlide key={idx}>
-114:                 <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center text-center">
-115:                   <div className="relative w-24 h-24 mb-4 rounded-full overflow-hidden">
-116:                     <Image src={testimonial.photo} alt={testimonial.name} layout="fill" objectFit="cover" />
-117:                   </div>
-118:                   <p className="italic mb-4">"{testimonial.text}"</p>
-119:                   <h4 className="font-semibold">{testimonial.name}</h4>
-120:                 </div>
-121:               </SwiperSlide>
-122:             ))}
-123:           </Swiper>
-124:         </section>
-125: 
-126:         {/* Contact Info */}
-127:         <section className="py-16 px-4 max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
-128:           <div>
-129:             <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
-130:             <p className="mb-2">123 Luxury Ave, Suite 100</p>
-131:             <p className="mb-2">Cityville, ST 12345</p>
-132:             <p className="mb-2">Phone: (123) 456-7890</p>
-133:             <p className="mb-6">Email: info@salonluxe.com</p>
-134:             <div className="flex space-x-4">
-135:               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-136:                 <FaInstagram size={24} />
-137:               </a>
-138:               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-139:                 <FaFacebookF size={24} />
-140:               </a>
-141:               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-142:                 <FaTwitter size={24} />
-143:               </a>
-144:             </div>
-145:           </div>
-146:           <div className="w-full h-64 md:h-full">
-147:             <iframe
-148:               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.019123456789!2d-122.419415684681!3d37.7749297797596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c1234567%3A0xabcdef1234567890!2sSalon%20Luxe!5e0!3m2!1sen!2sus!4v1610000000000!5m2!1sen!2sus"
-149:               width="100%"
-150:               height="100%"
-151:               style={{ border: 0 }}
-152:               allowFullScreen
-153:               loading="lazy"
-154:               referrerPolicy="no-referrer-when-downgrade"
-155:             ></iframe>
-156:           </div>
-157:         </section>
-158:       </main>
-159:     );
-160:   }
+<file path="components/Layout.tsx">
+  1: import React, { ReactNode, useState } from "react"
+  2: import Link from "next/link"
+  3: import { Button } from "@/components/ui/button"
+  4: 
+  5: interface LayoutProps {
+  6:   children: ReactNode
+  7: }
+  8: 
+  9: export default function Layout({ children }: LayoutProps) {
+ 10:   const [isMenuOpen, setIsMenuOpen] = useState(false)
+ 11: 
+ 12:   return (
+ 13:     <div className="flex flex-col min-h-screen">
+ 14:       <header className="flex items-center justify-between px-4 py-3 border-b">
+ 15:         <div className="flex items-center space-x-4">
+ 16:           <Link href="/" className="text-xl font-bold">
+ 17:             SalonLogo
+ 18:           </Link>
+ 19:         </div>
+ 20:         <nav className="hidden md:flex space-x-2">
+ 21:           <Button variant="link" asChild>
+ 22:             <Link href="/">Home</Link>
+ 23:           </Button>
+ 24:           <Button variant="link" asChild>
+ 25:             <Link href="/services">Services</Link>
+ 26:           </Button>
+ 27:           <Button variant="link" asChild>
+ 28:             <Link href="/gallery">Gallery</Link>
+ 29:           </Button>
+ 30:           <Button variant="link" asChild>
+ 31:             <Link href="/contact">Contact</Link>
+ 32:           </Button>
+ 33:           <Button variant="link" asChild>
+ 34:             <Link href="/booking">Booking</Link>
+ 35:           </Button>
+ 36:         </nav>
+ 37:         <div className="md:hidden">
+ 38:           <Button
+ 39:             variant="outline"
+ 40:             size="icon"
+ 41:             onClick={() => setIsMenuOpen(!isMenuOpen)}
+ 42:           >
+ 43:             <svg
+ 44:               className="w-6 h-6"
+ 45:               fill="none"
+ 46:               stroke="currentColor"
+ 47:               viewBox="0 0 24 24"
+ 48:               xmlns="http://www.w3.org/2000/svg"
+ 49:             >
+ 50:               {isMenuOpen ? (
+ 51:                 <path
+ 52:                   strokeLinecap="round"
+ 53:                   strokeLinejoin="round"
+ 54:                   strokeWidth={2}
+ 55:                   d="M6 18L18 6M6 6l12 12"
+ 56:                 />
+ 57:               ) : (
+ 58:                 <path
+ 59:                   strokeLinecap="round"
+ 60:                   strokeLinejoin="round"
+ 61:                   strokeWidth={2}
+ 62:                   d="M4 6h16M4 12h16M4 18h16"
+ 63:                 />
+ 64:               )}
+ 65:             </svg>
+ 66:           </Button>
+ 67:         </div>
+ 68:       </header>
+ 69:       {isMenuOpen && (
+ 70:         <nav className="flex flex-col md:hidden px-4 py-2 border-b space-y-2">
+ 71:           <Button variant="link" asChild onClick={() => setIsMenuOpen(false)}>
+ 72:             <Link href="/">Home</Link>
+ 73:           </Button>
+ 74:           <Button variant="link" asChild onClick={() => setIsMenuOpen(false)}>
+ 75:             <Link href="/services">Services</Link>
+ 76:           </Button>
+ 77:           <Button variant="link" asChild onClick={() => setIsMenuOpen(false)}>
+ 78:             <Link href="/gallery">Gallery</Link>
+ 79:           </Button>
+ 80:           <Button variant="link" asChild onClick={() => setIsMenuOpen(false)}>
+ 81:             <Link href="/contact">Contact</Link>
+ 82:           </Button>
+ 83:           <Button variant="link" asChild onClick={() => setIsMenuOpen(false)}>
+ 84:             <Link href="/booking">Booking</Link>
+ 85:           </Button>
+ 86:         </nav>
+ 87:       )}
+ 88:       <main className="flex-1">{children}</main>
+ 89:       <footer className="border-t px-4 py-6 text-center text-sm space-y-2">
+ 90:         <div>&copy; {new Date().getFullYear()} Salon Name. All rights reserved.</div>
+ 91:         <div className="space-x-4">
+ 92:           <Link href="/privacy" className="hover:underline">
+ 93:             Privacy Policy
+ 94:           </Link>
+ 95:           <Link href="/terms" className="hover:underline">
+ 96:             Terms of Service
+ 97:           </Link>
+ 98:         </div>
+ 99:       </footer>
+100:     </div>
+101:   )
+102: }
+103: */
+104: interface LayoutProps {
+105:   children: React.ReactNode;
+106:   title?: string;
+107:   description?: string;
+108: }
+109: 
+110: /**
+111:  * Layout component that wraps all pages
+112:  *
+113:  * Provides consistent page structure with head metadata
+114:  *
+115:  * @param {LayoutProps} props - Component props
+116:  * @returns {JSX.Element} The layout component
+117:  */
+118: export function Layout({ children }: LayoutProps): JSX.Element {
+119:   return <div className="min-h-screen font-sans">{children}</div>;
+120: }
 </file>
 
 </files>
